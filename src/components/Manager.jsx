@@ -40,7 +40,9 @@ const Manager = () => {
               id=""
               placeholder="Enter Password"
               />
-              <span className="absolute right-0">show</span>
+              <span className="absolute right-0">
+                <img src="icons/eye.png" alt="eye" />
+              </span>
               </div>
           </div>
           <button className="cursor-pointer text-black flex justify-center items-center bg-green-500 hover:bg-green-300 rounded-full px-6 py-2 w-fit gap-3 shadow-md shadow-gray-400/30">
