@@ -1,10 +1,20 @@
 import React from "react";
+import { useRef } from "react";
 
 const Manager = () => {
+  const ref = useRef()
+  const showPassword = ()=>{
+    if(ref.current.src.includes("icons/eyecross.png")){
+      ref.current.src = "icons/eye.png"
+    }
+    else{
+      ref.current.src = "icons/eyecross.png"
+    }
+  }
   return (
     <>
       {/* <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div> */}
-      <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
+      <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
       <div className="mycontainer">
         <h1 className="text-4xl font-bold text-center">
           <span className="text-green-700">&lt;</span>
@@ -40,12 +50,12 @@ const Manager = () => {
               id=""
               placeholder="Enter Password"
               />
-              <span className="absolute right-0">
-                <img src="icons/eye.png" alt="eye" />
+              <span className="absolute right-[3px] top-[4px] cursor-pointer px-2" onClick={showPassword}>
+                <img ref={ref} className="p-1" src="icons/eye.png" alt="eye" width={26} />
               </span>
               </div>
           </div>
-          <button className="cursor-pointer text-black flex justify-center items-center bg-green-500 hover:bg-green-300 rounded-full px-6 py-2 w-fit gap-3 shadow-md shadow-gray-400/30">
+          <button onClick={savePassword} className="cursor-pointer text-black flex justify-center items-center bg-green-500 hover:bg-green-300 rounded-full px-6 py-2 w-fit gap-3 shadow-md shadow-gray-400/30">
             <lord-icon
               src="https://cdn.lordicon.com/jgnvfzqg.json"
               trigger="hover"
