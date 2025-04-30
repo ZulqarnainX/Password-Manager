@@ -5,10 +5,6 @@ const Manager = () => {
     <>
       {/* <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div> */}
       <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
-
-
-
-
       <div className="mycontainer">
         <h1 className="text-4xl font-bold text-center">
           <span className="text-green-700">&lt;</span>
@@ -40,7 +36,7 @@ const Manager = () => {
               id=""
             />
           </div>
-          <button className="cursor-pointer text-black flex justify-center items-center bg-green-500 hover:bg-green-300 rounded-full px-4 py-2 w-fit">
+          <button className="cursor-pointer text-black flex justify-center items-center bg-green-500 hover:bg-green-300 rounded-full px-6 py-2 w-fit gap-3">
             <lord-icon
               src="https://cdn.lordicon.com/jgnvfzqg.json"
               trigger="hover"
