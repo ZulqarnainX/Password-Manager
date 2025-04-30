@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const Manager = () => {
   const ref = useRef();
@@ -28,7 +28,7 @@ const Manager = () => {
   const savePassword = () => {
     setpasswordArray([...passwordArray, form])
     localStorage.setItem("passwords", JSON.stringify())
-    console.log(passwordArray)
+    console.log([...passwordArray, form])
   };
 
 
