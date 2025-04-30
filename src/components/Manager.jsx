@@ -21,6 +21,7 @@ const Manager = () => {
             type="text"
             name=""
             id=""
+            placeholder="Enter website URL"
           />
           <div className="flex w-full justify-between gap-8">
             <input
@@ -28,15 +29,21 @@ const Manager = () => {
               type="text"
               name=""
               id=""
+              placeholder="Enter Username"
             />
+            <div className="relative">
+
             <input
               className="rounded-full border border-green-700 w-full p-4 py-1"
               type="text"
               name=""
               id=""
-            />
+              placeholder="Enter Password"
+              />
+              <span className="absolute right-0">show</span>
+              </div>
           </div>
-          <button className="cursor-pointer text-black flex justify-center items-center bg-green-500 hover:bg-green-300 rounded-full px-6 py-2 w-fit gap-3">
+          <button className="cursor-pointer text-black flex justify-center items-center bg-green-500 hover:bg-green-300 rounded-full px-6 py-2 w-fit gap-3 shadow-md shadow-gray-400/30">
             <lord-icon
               src="https://cdn.lordicon.com/jgnvfzqg.json"
               trigger="hover"
