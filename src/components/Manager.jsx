@@ -99,7 +99,7 @@ const Manager = () => {
           </button>
         </div>
 
-        <div className="passwords text-white font-bold text-xl py-4>
+        <div className="passwords text-white font-bold text-xl">
           <h2>Your Passwords</h2>
           <table className="table-auto text-white w-full overflow-hidden rounded-lg">
             <thead className="bg-green-800">
