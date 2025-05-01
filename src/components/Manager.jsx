@@ -101,32 +101,26 @@ const Manager = () => {
 
         <div className="passwords text-white">
           <h2 className="py-4 font-bold text-2xl">Your Passwords :</h2>
-          <table className="table-auto text-white w-full overflow-hidden ">
+          {passwordArray.length === 0 && <div>No Passwords to show</div>}
+          {passwordArray.length != 0 && <table className="table-auto text-white w-full overflow-hidden ">
             <thead className="bg-green-800">
               <tr>
-                <th className="py-2">Song</th>
-                <th className="py-2">Artist</th>
-                <th className="py-2">Year</th>
+                <th className="py-2">Site</th>
+                <th className="py-2">Username</th>
+                <th className="py-2">Password</th>
               </tr>
             </thead>
             <tbody className="bg-[rgba(5,46,22,0.25)]">
-              <tr>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">Malcolm Lockyer</td>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">1961</td>
+              {passwordArray.map((item, index)=>{
+
+               return <tr key={index}>
+                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32"><a href={item.site} target="_blank">{item.site}</a></td>
+                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">{item.username}</td>
+                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">{item.password}</td>
               </tr>
-              <tr>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">Witchy Woman</td>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">The Eagles</td>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">1972</td>
-              </tr>
-              <tr>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">Shining Star</td>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">Earth, Wind, and Fire</td>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">1975</td>
-              </tr>
+              })}
             </tbody>
-          </table>
+          </table>}
         </div>
       </div>
     </>
