@@ -8,7 +8,6 @@ const Manager = () => {
 
   useEffect(() => {
     let passwords = localStorage.getItem("passwords");
-    let passwordArray;
     if(passwords){
       setpasswordArray(JSON.parse(passwords))
     }
@@ -27,8 +26,7 @@ const Manager = () => {
 
   const savePassword = () => {
     setpasswordArray([...passwordArray, form])
-    localStorage.setItem("passwords", JSON.stringify())
-    console.log([...passwordArray, form])
+    localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
   };
 
 
