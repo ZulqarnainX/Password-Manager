@@ -4,17 +4,14 @@ import { useRef, useState, useEffect } from "react";
 const Manager = () => {
   const ref = useRef();
   const [form, setform] = useState({ site: "", username: "", password: "" });
-  const [passwordArray, setpasswordArray] = useState([])
+  const [passwordArray, setpasswordArray] = useState([]);
 
   useEffect(() => {
     let passwords = localStorage.getItem("passwords");
-    if(passwords){
-      setpasswordArray(JSON.parse(passwords))
+    if (passwords) {
+      setpasswordArray(JSON.parse(passwords));
     }
-    
-  }, [])
-  
-
+  }, []);
 
   const showPassword = () => {
     if (ref.current.src.includes("icons/eyecross.png")) {
@@ -25,19 +22,16 @@ const Manager = () => {
   };
 
   const savePassword = () => {
-    setpasswordArray([...passwordArray, form])
-    localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]))
+    setpasswordArray([...passwordArray, form]);
+    localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]));
   };
 
-
   const handleChange = (e) => {
-    setform({...form, [e.target.name]: e.target.value})
-  }
-  
+    setform({ ...form, [e.target.name]: e.target.value });
+  };
 
   return (
     <>
-      {/* <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div> */}
       <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
       <div className="mycontainer">
         <h1 className="text-4xl font-bold text-center">
@@ -103,6 +97,36 @@ const Manager = () => {
             ></lord-icon>
             Add Password
           </button>
+        </div>
+
+        <div className="passwords text-white font-bold text-xl py-4>
+          <h2>Your Passwords</h2>
+          <table className="table-auto text-white w-full overflow-hidden rounded-lg">
+            <thead className="bg-green-800">
+              <tr>
+                <th className="py-2">Song</th>
+                <th className="py-2">Artist</th>
+                <th className="py-2">Year</th>
+              </tr>
+            </thead>
+            <tbody className="bg-[rgba(5,46,22,0.25)]">
+              <tr>
+                <td className="outline outline-black py-2 text-center w-32">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                <td className="outline outline-black py-2 text-center w-32">Malcolm Lockyer</td>
+                <td className="outline outline-black py-2 text-center w-32">1961</td>
+              </tr>
+              <tr>
+                <td className="outline outline-black py-2 text-center w-32">Witchy Woman</td>
+                <td className="outline outline-black py-2 text-center w-32">The Eagles</td>
+                <td className="outline outline-black py-2 text-center w-32">1972</td>
+              </tr>
+              <tr>
+                <td className="outline outline-black py-2 text-center w-32">Shining Star</td>
+                <td className="outline outline-black py-2 text-center w-32">Earth, Wind, and Fire</td>
+                <td className="outline outline-black py-2 text-center w-32">1975</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </>
