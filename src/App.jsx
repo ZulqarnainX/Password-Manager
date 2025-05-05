@@ -8,7 +8,7 @@ function App() {
   return (
     <>
     <Navbar />
-    <div className='min-h-[87vh]'>
+    <div className='min-h-[85vh]'>
 
     <Manager />
     </div>
