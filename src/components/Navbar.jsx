@@ -16,6 +16,9 @@ const Navbar = () => {
             <a href='#'>Contact</a>
         </li>
       </ul>
+      <div>
+        <img className='invert p-5 w-10' src="icons/github.svg" alt="github logo" />
+      </div>
       </div>
     </nav>
   )
