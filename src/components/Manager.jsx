@@ -122,7 +122,7 @@ const Manager = () => {
                     <tr key={index}>
                       <td className="flex items-center justify-center outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
                         <a href={item.site} target="_blank">
-                          {item.site}
+                          <span>{item.site}</span>
                         </a>
                         <div className="size-7 cursor-pointer invert">
 
@@ -135,10 +135,10 @@ const Manager = () => {
                           </div>
                       </td>
                       <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">
-                        {item.username}
+                        <span>{item.username}</span>
                       </td>
                       <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">
-                        {item.password}
+                        <span>{item.password}</span>
                       </td>
                     </tr>
                   );
