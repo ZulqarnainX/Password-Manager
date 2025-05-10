@@ -14,6 +14,11 @@ const Manager = () => {
     }
   }, []);
 
+  const copyText = (text)=>{
+    alert("Copied To Clipboard")
+    navigator.clipboard.writeText(text)
+  }
+
   const showPassword = () => {
     passwordRef.current.type = "text";
     if (ref.current.src.includes("icons/eyecross.png")) {
@@ -125,8 +130,8 @@ const Manager = () => {
                           <a href={item.site} target="_blank">
                             <span>{item.site}</span>
                           </a>
-                          <div className="lordiconcopy size-7 cursor-pointer invert" onClick={copyText(item.site)}>
-                            <lord-icon
+                          <div className="lordiconcopy size-7 cursor-pointer invert" onClick={()=>{copyText(item.site)}}>
+                          <lord-icon
                               style={{
                                 width: "25px",
                                 height: "25px",
@@ -142,7 +147,7 @@ const Manager = () => {
                       <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
                         <div className="flex items-center justify-center">
                           <span>{item.username}</span>
-                          <div className="lordiconcopy size-7 cursor-pointer invert" onClick={copyText(item.username)}>
+                          <div className="lordiconcopy size-7 cursor-pointer invert" onClick={()=>{copyText(item.username)}}>
                             <lord-icon
                               style={{
                                 width: "25px",
@@ -159,7 +164,7 @@ const Manager = () => {
                       <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
                         <div className="flex items-center justify-center">
                         <span>{item.password}</span>
-                        <div className="lordiconcopy size-7 cursor-pointer invert" onClick={copyText(item.password)}>
+                        <div className="lordiconcopy size-7 cursor-pointer invert" onClick={()=>{copyText(item.password)}}>
                             <lord-icon
                               style={{
                                 width: "25px",
