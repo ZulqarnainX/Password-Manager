@@ -15,12 +15,12 @@ const Manager = () => {
   }, []);
 
   const showPassword = () => {
-    passwordRef.current.type = "text"
+    passwordRef.current.type = "text";
     if (ref.current.src.includes("icons/eyecross.png")) {
       ref.current.src = "icons/eye.png";
-      passwordRef.current.type = "password"
+      passwordRef.current.type = "password";
     } else {
-      passwordRef.current.type = "text"
+      passwordRef.current.type = "text";
       ref.current.src = "icons/eyecross.png";
     }
   };
@@ -107,25 +107,45 @@ const Manager = () => {
         <div className="passwords text-white">
           <h2 className="py-4 font-bold text-2xl">Your Passwords :</h2>
           {passwordArray.length === 0 && <div>No Passwords to show</div>}
-          {passwordArray.length != 0 && <table className="table-auto text-white w-full overflow-hidden ">
-            <thead className="bg-green-800">
-              <tr>
-                <th className="py-2">Site</th>
-                <th className="py-2">Username</th>
-                <th className="py-2">Password</th>
-              </tr>
-            </thead>
-            <tbody className="bg-[rgba(5,46,22,0.25)]">
-              {passwordArray.map((item, index)=>{
+          {passwordArray.length != 0 && (
+            <table className="table-auto text-white w-full overflow-hidden ">
+              <thead className="bg-green-800">
+                <tr>
+                  <th className="py-2">Site</th>
+                  <th className="py-2">Username</th>
+                  <th className="py-2">Password</th>
+                </tr>
+              </thead>
+              <tbody className="bg-[rgba(5,46,22,0.25)]">
+                {passwordArray.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className="flex items-center justify-center outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
+                        <a href={item.site} target="_blank">
+                          {item.site}
+                        </a>
+                        <div className="size-7 cursor-pointer invert">
 
-               return <tr key={index}>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32"><a href={item.site} target="_blank">{item.site}</a></td>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">{item.username}</td>
-                <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">{item.password}</td>
-              </tr>
-              })}
-            </tbody>
-          </table>}
+                        <lord-icon
+                        style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
+                          src="https://cdn.lordicon.com/iykgtsbt.json"
+                          trigger="hover"
+                          >
+                          </lord-icon>
+                          </div>
+                      </td>
+                      <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">
+                        {item.username}
+                      </td>
+                      <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center w-32">
+                        {item.password}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </>
