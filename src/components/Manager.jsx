@@ -1,5 +1,7 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Manager = () => {
   const ref = useRef();
@@ -14,10 +16,20 @@ const Manager = () => {
     }
   }, []);
 
-  const copyText = (text)=>{
-    alert("Copied To Clipboard")
-    navigator.clipboard.writeText(text)
-  }
+  const copyText = (text) => {
+    toast("📌 Copied To Clipboard!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+    navigator.clipboard.writeText(text);
+  };
 
   const showPassword = () => {
     passwordRef.current.type = "text";
@@ -41,6 +53,19 @@ const Manager = () => {
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
       <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
       <div className="mycontainer">
         <h1 className="text-4xl font-bold text-center">
@@ -130,8 +155,13 @@ const Manager = () => {
                           <a href={item.site} target="_blank">
                             <span>{item.site}</span>
                           </a>
-                          <div className="lordiconcopy size-7 cursor-pointer invert" onClick={()=>{copyText(item.site)}}>
-                          <lord-icon
+                          <div
+                            className="lordiconcopy size-7 cursor-pointer invert"
+                            onClick={() => {
+                              copyText(item.site);
+                            }}
+                          >
+                            <lord-icon
                               style={{
                                 width: "25px",
                                 height: "25px",
@@ -147,7 +177,12 @@ const Manager = () => {
                       <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
                         <div className="flex items-center justify-center">
                           <span>{item.username}</span>
-                          <div className="lordiconcopy size-7 cursor-pointer invert" onClick={()=>{copyText(item.username)}}>
+                          <div
+                            className="lordiconcopy size-7 cursor-pointer invert"
+                            onClick={() => {
+                              copyText(item.username);
+                            }}
+                          >
                             <lord-icon
                               style={{
                                 width: "25px",
@@ -163,8 +198,13 @@ const Manager = () => {
                       </td>
                       <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
                         <div className="flex items-center justify-center">
-                        <span>{item.password}</span>
-                        <div className="lordiconcopy size-7 cursor-pointer invert" onClick={()=>{copyText(item.password)}}>
+                          <span>{item.password}</span>
+                          <div
+                            className="lordiconcopy size-7 cursor-pointer invert"
+                            onClick={() => {
+                              copyText(item.password);
+                            }}
+                          >
                             <lord-icon
                               style={{
                                 width: "25px",
@@ -174,9 +214,9 @@ const Manager = () => {
                               }}
                               src="https://cdn.lordicon.com/iykgtsbt.json"
                               trigger="hover"
-                              ></lord-icon>
-                              </div>
+                            ></lord-icon>
                           </div>
+                        </div>
                       </td>
                     </tr>
                   );
