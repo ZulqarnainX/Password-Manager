@@ -156,7 +156,7 @@ const Manager = () => {
                             <span>{item.site}</span>
                           </a>
                           <div
-                            className="lordiconcopy size-7 cursor-pointer invert"
+                            className="lordiconcopy size-7 cursor-pointer brightness-10000"
                             onClick={() => {
                               copyText(item.site);
                             }}
@@ -178,7 +178,7 @@ const Manager = () => {
                         <div className="flex items-center justify-center">
                           <span>{item.username}</span>
                           <div
-                            className="lordiconcopy size-7 cursor-pointer invert"
+                            className="lordiconcopy size-7 cursor-pointer brightness-10000"
                             onClick={() => {
                               copyText(item.username);
                             }}
@@ -200,7 +200,7 @@ const Manager = () => {
                         <div className="flex items-center justify-center">
                           <span>{item.password}</span>
                           <div
-                            className="lordiconcopy size-7 cursor-pointer invert"
+                            className="lordiconcopy size-7 cursor-pointer brightness-10000"
                             onClick={() => {
                               copyText(item.password);
                             }}
