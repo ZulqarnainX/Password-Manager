@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const Manager = () => {
   const ref = useRef();
@@ -130,7 +130,7 @@ const Manager = () => {
               src="https://cdn.lordicon.com/jgnvfzqg.json"
               trigger="hover"
             ></lord-icon>
-            Add Password
+            Save Password
           </button>
         </div>
 
@@ -144,6 +144,7 @@ const Manager = () => {
                   <th className="py-2">Site</th>
                   <th className="py-2">Username</th>
                   <th className="py-2">Password</th>
+                  <th className="py-2">Actions</th>
                 </tr>
               </thead>
               <tbody className="bg-[rgba(5,46,22,0.25)]">
@@ -217,6 +218,22 @@ const Manager = () => {
                             ></lord-icon>
                           </div>
                         </div>
+                      </td>
+                      <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
+                        <span className="brightness-10000 cursor-pointer mx-1">
+                          <lord-icon
+                            src="https://cdn.lordicon.com/gwlusjdu.json"
+                            trigger="hover"
+                            style={{ width: "25px", height: "25px" }}
+                          ></lord-icon>
+                        </span>
+                        <span className="brightness-10000 cursor-pointer mx-1">
+                          <lord-icon
+                            src="https://cdn.lordicon.com/skkahier.json"
+                            trigger="hover"
+                            style={{ width: "25px", height: "25px" }}
+                          ></lord-icon>
+                        </span>
                       </td>
                     </tr>
                   );
