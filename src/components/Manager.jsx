@@ -44,8 +44,14 @@ const Manager = () => {
   };
 
   const savePassword = () => {
-    setpasswordArray([...passwordArray, form]);
-    localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]));
+    setpasswordArray([...passwordArray, {...form, id: uuidv4()}]);
+    localStorage.setItem("passwords", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
+  };
+  
+  const deletePassword = (id) => {
+    console.log("Deleting password with id : ",id)
+    // setpasswordArray([...passwordArray, {...form, id: uuidv4()}]);
+    // localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]));
   };
 
   const handleChange = (e) => {
@@ -221,7 +227,7 @@ const Manager = () => {
                         </div>
                       </td>
                       <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
-                        <span className="brightness-10000 cursor-pointer mx-1">
+                        <span className="brightness-10000 cursor-pointer mx-1" onClick={()=>{editPassword(item.id)}}>
                           <lord-icon
                             src="https://cdn.lordicon.com/gwlusjdu.json"
                             trigger="hover"
