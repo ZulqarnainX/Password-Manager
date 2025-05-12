@@ -53,6 +53,11 @@ const Manager = () => {
     // setpasswordArray([...passwordArray, {...form, id: uuidv4()}]);
     // localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]));
   };
+  const editPassword = (id) => {
+    console.log("Editing password with id : ",id)
+    // setpasswordArray([...passwordArray, {...form, id: uuidv4()}]);
+    // localStorage.setItem("passwords", JSON.stringify([...passwordArray, form]));
+  };
 
   const handleChange = (e) => {
     setform({ ...form, [e.target.name]: e.target.value });
@@ -234,7 +239,7 @@ const Manager = () => {
                             style={{ width: "25px", height: "25px" }}
                           ></lord-icon>
                         </span>
-                        <span className="brightness-10000 cursor-pointer mx-1">
+                        <span className="brightness-10000 cursor-pointer mx-1" onClick={()=>{deletePassword(item.id)}}>
                           <lord-icon
                             src="https://cdn.lordicon.com/skkahier.json"
                             trigger="hover"
