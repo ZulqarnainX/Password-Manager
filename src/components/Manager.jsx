@@ -43,11 +43,43 @@ const Manager = () => {
     }
   };
 
+
   const savePassword = () => {
-    setpasswordArray([...passwordArray, {...form, id: uuidv4()}]);
-    localStorage.setItem("passwords", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
-    setform({ site: "", username: "", password: "" });
-  };
+  const { site, username, password } = form;
+
+  // Check if any field is empty
+  if (!site.trim() || !username.trim() || !password.trim()) {
+    toast.error("⚠️ Please fill in all fields!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "dark",
+      transition: Bounce,
+    });
+    return; // Stop further execution
+  }
+
+  const newEntry = { ...form, id: uuidv4() };
+  const updatedArray = [...passwordArray, newEntry];
+  setpasswordArray(updatedArray);
+  localStorage.setItem("passwords", JSON.stringify(updatedArray));
+  setform({ site: "", username: "", password: "" });
+
+  toast("✅ Password Saved!", {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    transition: Bounce,
+  });
+};
   
   const deletePassword = (id) => {
     console.log("Deleting password with id : ",id)
@@ -55,6 +87,17 @@ const Manager = () => {
     if (c){
       setpasswordArray(passwordArray.filter(item=>item.id!==id));
       localStorage.setItem("passwords", JSON.stringify(passwordArray.filter(item=>item.id!==id)));
+        toast("🗑️ Password Deleted!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
     }
   };
   const editPassword = (id) => {
