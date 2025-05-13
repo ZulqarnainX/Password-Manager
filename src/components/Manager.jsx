@@ -126,7 +126,7 @@ const Manager = () => {
         transition={Bounce}
       />
       <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
-      <div className="p-2 md:p-0 mycontainer">
+      <div className="p-2 pt-7 mycontainer md:mycontainer2">
         <h1 className="text-4xl font-bold text-center">
           <span className="text-green-700">&lt;</span>
           <span className="text-white">Pass</span>
