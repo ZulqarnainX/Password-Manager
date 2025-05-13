@@ -126,7 +126,7 @@ const Manager = () => {
         transition={Bounce}
       />
       <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
-      <div className="mycontainer">
+      <div className="p-2 md:p-0 mycontainer">
         <h1 className="text-4xl font-bold text-center">
           <span className="text-green-700">&lt;</span>
           <span className="text-white">Pass</span>
@@ -143,17 +143,17 @@ const Manager = () => {
             className="rounded-full border border-green-700 w-full p-4 py-1"
             type="text"
             name="site"
-            id=""
+            id="site"
             placeholder="Enter website URL"
           />
-          <div className="flex w-full justify-between gap-8">
+          <div className="flex flex-col md:flex-row w-full justify-between gap-8">
             <input
               value={form.username}
               onChange={handleChange}
               className="rounded-full border border-green-700 w-full p-4 py-1"
               type="text"
               name="username"
-              id=""
+              id="username"
               placeholder="Enter Username"
             />
             <div className="relative">
@@ -164,7 +164,7 @@ const Manager = () => {
                 className="rounded-full border border-green-700 w-full p-4 py-1"
                 type="password"
                 name="password"
-                id=""
+                id="password"
                 placeholder="Enter Password"
               />
               <span
