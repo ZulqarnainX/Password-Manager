@@ -210,13 +210,13 @@ const Manager = () => {
                 {passwordArray.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td className="flex items-center justify-center outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
+                      <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
                         <div className="flex items-center justify-center">
                           <a href={item.site} target="_blank">
                             <span>{item.site}</span>
                           </a>
                           <div
-                            className="lordiconcopy size-7 cursor-pointer brightness-10000"
+                            className="lordiconcopy size-7 cursor-pointer brightness-10000 hidden lg:block"
                             onClick={() => {
                               copyText(item.site);
                             }}
@@ -238,7 +238,7 @@ const Manager = () => {
                         <div className="flex items-center justify-center">
                           <span>{item.username}</span>
                           <div
-                            className="lordiconcopy size-7 cursor-pointer brightness-10000"
+                            className="lordiconcopy size-7 cursor-pointer brightness-10000 hidden lg:block"
                             onClick={() => {
                               copyText(item.username);
                             }}
@@ -260,7 +260,7 @@ const Manager = () => {
                         <div className="flex items-center justify-center">
                           <span>{item.password}</span>
                           <div
-                            className="lordiconcopy size-7 cursor-pointer brightness-10000"
+                            className="lordiconcopy size-7 cursor-pointer brightness-10000 hidden lg:block"
                             onClick={() => {
                               copyText(item.password);
                             }}
