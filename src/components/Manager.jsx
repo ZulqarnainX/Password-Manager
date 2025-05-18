@@ -4,11 +4,15 @@ import { ToastContainer, toast, Bounce } from "react-toastify";
 import { v4 as uuidv4 } from 'uuid';
 import "react-toastify/dist/ReactToastify.css";
 
-const Manager = () => {
+const Manager  = ({ DarkMode, SetDarkMode }) => {
   const ref = useRef();
   const passwordRef = useRef();
   const [form, setform] = useState({ site: "", username: "", password: "" });
   const [passwordArray, setpasswordArray] = useState([]);
+  
+    useEffect(() => {
+    console.log("DarkMode changed:", DarkMode);
+  }, [DarkMode]);
 
   useEffect(() => {
     let passwords = localStorage.getItem("passwords");
@@ -125,14 +129,22 @@ const Manager = () => {
         theme="dark"
         transition={Bounce}
       />
-      <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
+      {/* <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div> */}
+      {DarkMode ? (
+        <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
+      ) : (
+        <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#9fccfa_40%,#0974f1_100%)]"></div>
+      )}
+
       <div className="p-2 pt-7 mycontainer md:mycontainer2">
         <h1 className="text-4xl font-bold text-center">
           <span className="text-green-700">&lt;</span>
           <span className="text-white">Pass</span>
           <span className="text-green-700">OP/&gt;</span>
         </h1>
-        <p className="text-green-900 text-lg text-center">
+        <p 
+        className={`text-lg text-center
+        ${DarkMode ? 'text-green-900' : 'text-black'}`}>
           Your own password manager
         </p>
 
@@ -140,7 +152,7 @@ const Manager = () => {
           <input
             value={form.site}
             onChange={handleChange}
-            className="rounded-full border border-green-700 w-full p-4 py-1"
+            className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-green-700' : 'border-white text-black'}`}
             type="text"
             name="site"
             id="site"
@@ -150,7 +162,7 @@ const Manager = () => {
             <input
               value={form.username}
               onChange={handleChange}
-              className="rounded-full border border-green-700 w-full p-4 py-1"
+              className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-green-700' : 'border-white text-black'}`}
               type="text"
               name="username"
               id="username"
@@ -161,7 +173,7 @@ const Manager = () => {
                 ref={passwordRef}
                 value={form.password}
                 onChange={handleChange}
-                className="rounded-full border border-green-700 w-full p-4 py-1"
+                className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-green-700' : 'border-white text-black'}`}
                 type="password"
                 name="password"
                 id="password"
@@ -183,7 +195,7 @@ const Manager = () => {
           </div>
           <button
             onClick={savePassword}
-            className="cursor-pointer text-black flex justify-center items-center bg-green-500 hover:bg-green-300 rounded-full px-6 py-2 w-fit gap-3 shadow-md shadow-gray-400/30"
+            className={`cursor-pointer text-black flex justify-center items-center rounded-full px-6 py-2 w-fit gap-3 shadow-md shadow-gray-400/30 ${DarkMode ? 'bg-green-500 hover:bg-green-300' : 'bg-white hover:bg-gray-200'}`}
           >
             <lord-icon
               src="https://cdn.lordicon.com/jgnvfzqg.json"
@@ -193,8 +205,10 @@ const Manager = () => {
           </button>
         </div>
 
-        <div className="passwords text-white">
-          <h2 className="py-4 font-bold text-2xl">Your Passwords :</h2>
+        <div 
+        className={`passwords ${DarkMode ? 'text-white' : 'text-black'}`}>
+          <h2 
+          className="py-4 font-bold text-2xl">Your Passwords :</h2>
           {passwordArray.length === 0 && <div>No Passwords to show</div>}
           {passwordArray.length != 0 && (
             <table className="table-auto text-white w-full overflow-hidden ">

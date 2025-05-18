@@ -1,22 +1,45 @@
-import React from 'react'
+import React from 'react';
 
-const Navbar = () => {
+const Navbar = ({ DarkMode, SetDarkMode }) => {
   return (
-    <nav className='bg-black text-white flex justify-between items-center px-4 h-14 outline-gray-900 outline shadow-md shadow-gray-900/30'>
-      <div className="mycontainer  text-white flex justify-between items-center px-4 h-14">
-        <div className="logo font-bold text-2xl">
-          <span className='text-green-700'>&lt;</span>
+    <nav 
+      className={`shadow-md px-4 transition-all duration-100 ease-in-out text-white
+        ${DarkMode ? 'bg-black shadow-gray-900/30' : 'bg-[#63a9f6] shadow-black-900/30'}`}
+    >
+      <div className="flex flex-wrap justify-between items-center h-14 max-w-screen-xl mx-auto w-full">
+
+        {/* Logo */}
+        <div className="text-2xl font-bold">
+          <span className="text-green-700">&lt;</span>
           Pass
-          <span className='text-green-700'>OP/&gt;</span>
-          </div>
-      <button className='text-white bg-[#35333354] my-5 rounded-full flex justify-center items-center'>
-        <img className='invert w-8 py-1' src="icons/github.svg" alt="github logo" />
-        <span className='font-bold px-3'>GitHub</span>
-        
-      </button>
+          <span className="text-green-700">OP/&gt;</span>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex items-center gap-2 mt-2 sm:mt-0">
+
+          {/* GitHub Button */}
+          <button className="flex items-center bg-[#35333354] text-white px-3 py-1 rounded-full hover:bg-[#4a4a4a80] transition duration-200 text-sm">
+            <img className="invert w-5 h-5" src="icons/github.svg" alt="GitHub" />
+            <span className="ml-2 font-medium hidden sm:inline">GitHub</span>
+          </button>
+
+          {/* Theme Switcher Button */}
+          <button
+            onClick={() => SetDarkMode(!DarkMode)}
+            className="flex items-center bg-[#35333354] text-white px-4 py-1 rounded-full hover:bg-green-700 transition duration-200 text-sm"
+          >
+            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path d="M12 3v1m0 16v1m8.66-12.34l-.7.7m-13.9 0l-.7-.7M21 12h-1M4 12H3m15.66 6.34l-.7-.7m-13.9 0l-.7.7" />
+              <circle cx="12" cy="12" r="5" />
+            </svg>
+            <span className="font-medium hidden sm:inline">Switch Theme</span>
+          </button>
+
+        </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

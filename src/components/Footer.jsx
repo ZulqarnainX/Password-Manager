@@ -1,8 +1,11 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ DarkMode, SetDarkMode }) => {
   return (
-    <div className="bg-black text-white flex flex-col justify-center items-center fixed bottom-0 w-full outline-red-400 outline shadow-md shadow-gray-900/30 md:opacity-100 opacity-0">
+    <div 
+    className={`text-white flex flex-col justify-center items-center fixed bottom-0 w-full md:opacity-100 opacity-0
+        ${DarkMode ? 'outline bg-black shadow-gray-900/30 outline-red-400' : 'bg-[#63a9f6] shadow-black-900/30'}`}
+    >
       <div className="logo font-bold text-2xl">
         <span className="text-green-700">&lt;</span>
         Pass
