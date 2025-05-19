@@ -1,16 +1,16 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import "react-toastify/dist/ReactToastify.css";
 
-const Manager  = ({ DarkMode, SetDarkMode }) => {
+const Manager = ({ DarkMode, SetDarkMode }) => {
   const ref = useRef();
   const passwordRef = useRef();
   const [form, setform] = useState({ site: "", username: "", password: "" });
   const [passwordArray, setpasswordArray] = useState([]);
-  
-    useEffect(() => {
+
+  useEffect(() => {
     console.log("DarkMode changed:", DarkMode);
   }, [DarkMode]);
 
@@ -30,7 +30,7 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
+      theme: DarkMode ? "dark" : "light",
       transition: Bounce,
     });
     navigator.clipboard.writeText(text);
@@ -47,51 +47,31 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
     }
   };
 
-
   const savePassword = () => {
-  const { site, username, password } = form;
+    const { site, username, password } = form;
 
-  // Check if any field is empty
-  if (!site.trim() || !username.trim() || !password.trim()) {
-    toast.error("⚠️ Please fill in all fields!", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "dark",
-      transition: Bounce,
-    });
-    return; // Stop further execution
-  }
+    // Check if any field is empty
+    if (!site.trim() || !username.trim() || !password.trim()) {
+      toast.error("⚠️ Please fill in all fields!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        theme: DarkMode ? "dark" : "light",
+        transition: Bounce,
+      });
+      return; // Stop further execution
+    }
 
-  const newEntry = { ...form, id: uuidv4() };
-  const updatedArray = [...passwordArray, newEntry];
-  setpasswordArray(updatedArray);
-  localStorage.setItem("passwords", JSON.stringify(updatedArray));
-  setform({ site: "", username: "", password: "" });
+    const newEntry = { ...form, id: uuidv4() };
+    const updatedArray = [...passwordArray, newEntry];
+    setpasswordArray(updatedArray);
+    localStorage.setItem("passwords", JSON.stringify(updatedArray));
+    setform({ site: "", username: "", password: "" });
 
-  toast("✅ Password Saved!", {
-    position: "top-right",
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: false,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-    transition: Bounce,
-  });
-};
-  
-  const deletePassword = (id) => {
-    console.log("Deleting password with id : ",id)
-    let c = confirm("Do you really want to delete this password ?")
-    if (c){
-      setpasswordArray(passwordArray.filter(item=>item.id!==id));
-      localStorage.setItem("passwords", JSON.stringify(passwordArray.filter(item=>item.id!==id)));
-        toast("🗑️ Password Deleted!", {
+    toast("✅ Password Saved!", {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,
@@ -99,15 +79,37 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "dark",
+      theme: DarkMode ? "dark" : "light",
       transition: Bounce,
     });
+  };
+
+  const deletePassword = (id) => {
+    console.log("Deleting password with id : ", id);
+    let c = confirm("Do you really want to delete this password ?");
+    if (c) {
+      setpasswordArray(passwordArray.filter((item) => item.id !== id));
+      localStorage.setItem(
+        "passwords",
+        JSON.stringify(passwordArray.filter((item) => item.id !== id))
+      );
+      toast("🗑️ Password Deleted!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
     }
   };
   const editPassword = (id) => {
-    console.log("Editing password with id : ",id)
-    setform(passwordArray.filter(i=>i.id===id)[0])
-    setpasswordArray(passwordArray.filter(item=>item.id!==id));
+    console.log("Editing password with id : ", id);
+    setform(passwordArray.filter((i) => i.id === id)[0]);
+    setpasswordArray(passwordArray.filter((item) => item.id !== id));
   };
 
   const handleChange = (e) => {
@@ -126,7 +128,7 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
+        theme={DarkMode ? "dark" : "light"} // <--- Set theme dynamically here
         transition={Bounce}
       />
       {/* <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div> */}
@@ -138,13 +140,18 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
 
       <div className="p-2 pt-7 mycontainer md:mycontainer2">
         <h1 className="text-4xl font-bold text-center">
-          <span className={` ${DarkMode ? 'text-green-700' : 'text-black'} `}>&lt;</span>
+          <span className={` ${DarkMode ? "text-green-700" : "text-black"} `}>
+            &lt;
+          </span>
           <span className="text-white">Pass</span>
-          <span className={` ${DarkMode ? 'text-green-700' : 'text-black'} `}>OP/&gt;</span>
+          <span className={` ${DarkMode ? "text-green-700" : "text-black"} `}>
+            OP/&gt;
+          </span>
         </h1>
-        <p 
-        className={`text-lg text-center
-        ${DarkMode ? 'text-[#595959]' : 'text-black'}`}>
+        <p
+          className={`text-lg text-center
+        ${DarkMode ? "text-[#595959]" : "text-black"}`}
+        >
           Your own password manager
         </p>
 
@@ -152,7 +159,11 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
           <input
             value={form.site}
             onChange={handleChange}
-            className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-[#373737] shadow-[0_0_8px_2px_rgb(57_57_57_/_50%)]' : 'border-white text-black'}`}
+            className={`rounded-full border w-full p-4 py-1 ${
+              DarkMode
+                ? "border-[#373737] shadow-[0_0_8px_2px_rgb(57_57_57_/_50%)]"
+                : "text-black backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-white/40"
+            }`}
             type="text"
             name="site"
             id="site"
@@ -162,7 +173,11 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
             <input
               value={form.username}
               onChange={handleChange}
-              className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-[#373737] shadow-[0_0_8px_2px_rgb(57_57_57_/_50%)' : 'border-white text-black'}`}
+              className={`rounded-full border w-full p-4 py-1 ${
+                DarkMode
+                  ? "border-[#373737] shadow-[0_0_8px_2px_rgb(57_57_57_/_50%)"
+                  : "backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-white/40 text-black"
+              }`}
               type="text"
               name="username"
               id="username"
@@ -173,14 +188,20 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
                 ref={passwordRef}
                 value={form.password}
                 onChange={handleChange}
-                className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-[#373737] shadow-[0_0_8px_2px_rgb(57_57_57_/_50%)]' : 'border-white text-black'}`}
+                className={`rounded-full border w-full p-4 py-1 ${
+                  DarkMode
+                    ? "border-[#373737] shadow-[0_0_8px_2px_rgb(57_57_57_/_50%)]"
+                    : "backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-white/40 text-black"
+                }`}
                 type="password"
                 name="password"
                 id="password"
                 placeholder="Enter Password"
               />
               <span
-                className={`absolute right-[3px] top-[4px] cursor-pointer px-2 ${DarkMode ? '' : 'invert'}`}
+                className={`absolute right-[3px] top-[4px] cursor-pointer px-2 ${
+                  DarkMode ? "" : "invert"
+                }`}
                 onClick={showPassword}
               >
                 <img
@@ -195,7 +216,11 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
           </div>
           <button
             onClick={savePassword}
-            className={`cursor-pointer text-black flex justify-center items-center rounded-full px-6 py-2 w-fit gap-3 shadow-md shadow-gray-400/30 ${DarkMode ? 'bg-green-500 hover:bg-green-300' : 'bg-white hover:bg-gray-200'}`}
+            className={`cursor-pointer text-black flex justify-center items-center rounded-full px-6 py-2 w-fit gap-3 shadow-md shadow-gray-400/30 ${
+              DarkMode
+                ? "bg-green-500 hover:bg-green-300"
+                : "bg-white hover:bg-gray-200"
+            }`}
           >
             <lord-icon
               src="https://cdn.lordicon.com/jgnvfzqg.json"
@@ -205,14 +230,18 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
           </button>
         </div>
 
-        <div 
-        className={`passwords ${DarkMode ? 'text-white' : 'text-black'}`}>
-          <h2 
-          className="py-4 font-bold text-2xl">Your Passwords :</h2>
+        <div className={`passwords ${DarkMode ? "text-white" : "text-black"}`}>
+          <h2 className="py-4 font-bold text-2xl">Your Passwords :</h2>
           {passwordArray.length === 0 && <div>No Passwords to show</div>}
           {passwordArray.length != 0 && (
             <table className="table-auto text-white w-full overflow-hidden ">
-              <thead className={`${DarkMode ? 'bg-[#6d6d6d30] shadow-[0_0_8px_2px_rgba(156,163,175,0.5)] border rounded px-4 py-2' : 'bg-black'}`}>
+              <thead
+                className={`${
+                  DarkMode
+                    ? "bg-[#6d6d6d30] shadow-[0_0_8px_2px_rgba(156,163,175,0.5)] border rounded px-4 py-2"
+                    : "bg-black shadow-[0_0_8px_2px_rgba(156,163,175,0.5)] border rounded px-4 py-2"
+                }`}
+              >
                 <tr>
                   <th className="py-2">Site</th>
                   <th className="py-2">Username</th>
@@ -220,7 +249,9 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
                   <th className="py-2">Actions</th>
                 </tr>
               </thead>
-              <tbody className={`${DarkMode ? 'bg-[#0000000f]' : 'bg-[#406895]'}`}>
+              <tbody
+                className={`${DarkMode ? "bg-[#0000000f]" : "bg-[#406895]"}`}
+              >
                 {passwordArray.map((item, index) => {
                   return (
                     <tr key={index}>
@@ -293,14 +324,24 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
                         </div>
                       </td>
                       <td className="outline outline-[rgba(255,255,255,0.08)] backdrop-blur-sm py-2 text-center">
-                        <span className="brightness-10000 cursor-pointer mx-1" onClick={()=>{editPassword(item.id)}}>
+                        <span
+                          className="brightness-10000 cursor-pointer mx-1"
+                          onClick={() => {
+                            editPassword(item.id);
+                          }}
+                        >
                           <lord-icon
                             src="https://cdn.lordicon.com/gwlusjdu.json"
                             trigger="hover"
                             style={{ width: "25px", height: "25px" }}
                           ></lord-icon>
                         </span>
-                        <span className="brightness-10000 cursor-pointer mx-1" onClick={()=>{deletePassword(item.id)}}>
+                        <span
+                          className="brightness-10000 cursor-pointer mx-1"
+                          onClick={() => {
+                            deletePassword(item.id);
+                          }}
+                        >
                           <lord-icon
                             src="https://cdn.lordicon.com/skkahier.json"
                             trigger="hover"

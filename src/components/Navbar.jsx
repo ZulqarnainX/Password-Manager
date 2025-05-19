@@ -4,7 +4,7 @@ const Navbar = ({ DarkMode, SetDarkMode }) => {
   return (
     <nav 
       className={`px-4 transition-all duration-100 ease-in-out text-white
-        ${DarkMode ? 'bg-black outline outline-white shadow-[0_0_8px_2px_rgba(156,163,175,0.5)]' : 'bg-[#63a9f6] border-blue-500 outline outline-blue-200 shadow-lg shadow-blue-100'}`}
+        ${DarkMode ? 'bg-black outline outline-white shadow-[0_0_8px_2px_rgba(156,163,175,0.5)]' : 'bg-[#63a9f6] border-blue-500 outline outline-blue-200 shadow-[0_4px_12px_rgba(0,0,0,0.11)]'}`}
     >
       <div className="flex flex-wrap justify-between items-center h-14 max-w-screen-xl mx-auto w-full">
 
