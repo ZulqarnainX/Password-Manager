@@ -19,7 +19,7 @@ const Navbar = ({ DarkMode, SetDarkMode }) => {
         <div className="flex items-center gap-2 mt-2 sm:mt-0">
 
           {/* GitHub Button */}
-          <button className="flex items-center bg-[#35333354] text-white px-3 py-1 rounded-full hover:bg-[#4a4a4a80] transition duration-200 text-sm">
+          <button onClick={() => window.open('https://github.com/ZulqarnainX/Password-Manager', '_blank')} className="flex items-center bg-[#35333354] text-white px-3 py-1 rounded-full hover:bg-[#4a4a4a80] transition duration-200 text-sm">
             <img className="invert w-5 h-5" src="icons/github.svg" alt="GitHub" />
             <span className="ml-2 font-medium hidden sm:inline">GitHub</span>
           </button>
