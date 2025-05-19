@@ -1,12 +1,61 @@
-# React + Vite
+# Password Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, secure, and fully responsive **Password Manager** built with **Vite**, **React**, and **Tailwind CSS**. 
 
-Currently, two official plugins are available:
+Store, edit, delete, and copy your passwords easily with a clean UI that supports both **dark** and **light** modes. All passwords are saved securely in **localStorage** for quick access without any backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Responsive Design Preview](./Preview/Responsive_Design.png)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Add new passwords with ease
+- Edit existing password entries
+- Delete passwords you no longer need
+- Copy passwords to clipboard with one click
+- Persistent storage using **localStorage**
+- Supports **Dark Mode** and **Light Mode** toggling  
+- Responsive design optimized for all screen sizes  
+- Notifications for actions using **React Toastify**
+
+![Dark and Light Mode Preview](./Preview/dark_light_preview.png)
+
+## Technologies Used
+
+- **Vite** — Lightning fast build tool  
+- **React** — UI library for building user interfaces  
+- **Tailwind CSS** — Utility-first CSS framework for styling  
+- **React Toastify** — For elegant toast notifications  
+- **localStorage** — Browser storage for saving passwords locally  
+
+#
+* Use the **Add Password** form to store your credentials.
+* Click **Edit** to modify any saved password.
+* Use **Delete** to remove entries.
+* Click **Copy** to copy passwords to your clipboard.
+* Toggle between **Dark** and **Light** modes with the switch.
+
+## Folder Structure
+
+```
+/Preview
+  ├── Responsive_Design.png
+  └── dark_light_preview.png
+/src
+  ├── components
+  ├── pages
+  └── styles
+```
+
+## Screenshots
+
+### Responsive Design
+
+![Responsive Design Preview](./Preview/Responsive_Design.png)
+
+### Dark and Light Mode Preview
+
+![Dark and Light Mode Preview](./Preview/dark_light_preview.png)
+
+
+
+Feel free to contribute or suggest improvements!
