@@ -17,7 +17,6 @@ Store, edit, delete, and copy your passwords easily with a clean UI that support
 - Responsive design optimized for all screen sizes  
 - Notifications for actions using **React Toastify**
 
-![Dark and Light Mode Preview](./Preview/dark_light_preview.png)
 
 ## Technologies Used
 
@@ -34,28 +33,11 @@ Store, edit, delete, and copy your passwords easily with a clean UI that support
 * Click **Copy** to copy passwords to your clipboard.
 * Toggle between **Dark** and **Light** modes with the switch.
 
-## Folder Structure
 
-```
-/Preview
-  ├── Responsive_Design.png
-  └── dark_light_preview.png
-/src
-  ├── components
-  ├── pages
-  └── styles
-```
-
-## Screenshots
 
 ### Responsive Design
 
 ![Responsive Design Preview](./Preview/Responsive_Design.png)
-
-### Dark and Light Mode Preview
-
-![Dark and Light Mode Preview](./Preview/dark_light_preview.png)
-
 
 
 Feel free to contribute or suggest improvements!
