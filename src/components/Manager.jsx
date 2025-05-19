@@ -131,20 +131,20 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
       />
       {/* <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div> */}
       {DarkMode ? (
-        <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#4caf50_100%)]"></div>
+        <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#575757_100%)]"></div>
       ) : (
         <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#9fccfa_40%,#0974f1_100%)]"></div>
       )}
 
       <div className="p-2 pt-7 mycontainer md:mycontainer2">
         <h1 className="text-4xl font-bold text-center">
-          <span className="text-green-700">&lt;</span>
+          <span className={` ${DarkMode ? 'text-green-700' : 'text-black'} `}>&lt;</span>
           <span className="text-white">Pass</span>
-          <span className="text-green-700">OP/&gt;</span>
+          <span className={` ${DarkMode ? 'text-green-700' : 'text-black'} `}>OP/&gt;</span>
         </h1>
         <p 
         className={`text-lg text-center
-        ${DarkMode ? 'text-green-900' : 'text-black'}`}>
+        ${DarkMode ? 'text-[#595959]' : 'text-black'}`}>
           Your own password manager
         </p>
 
@@ -152,7 +152,7 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
           <input
             value={form.site}
             onChange={handleChange}
-            className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-green-700' : 'border-white text-black'}`}
+            className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-[#373737] shadow-[0_0_8px_2px_rgb(57_57_57_/_50%)]' : 'border-white text-black'}`}
             type="text"
             name="site"
             id="site"
@@ -162,7 +162,7 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
             <input
               value={form.username}
               onChange={handleChange}
-              className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-green-700' : 'border-white text-black'}`}
+              className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-[#373737] shadow-[0_0_8px_2px_rgb(57_57_57_/_50%)' : 'border-white text-black'}`}
               type="text"
               name="username"
               id="username"
@@ -173,14 +173,14 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
                 ref={passwordRef}
                 value={form.password}
                 onChange={handleChange}
-                className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-green-700' : 'border-white text-black'}`}
+                className={`rounded-full border w-full p-4 py-1 ${DarkMode ? 'border-[#373737] shadow-[0_0_8px_2px_rgb(57_57_57_/_50%)]' : 'border-white text-black'}`}
                 type="password"
                 name="password"
                 id="password"
                 placeholder="Enter Password"
               />
               <span
-                className="absolute right-[3px] top-[4px] cursor-pointer px-2"
+                className={`absolute right-[3px] top-[4px] cursor-pointer px-2 ${DarkMode ? '' : 'invert'}`}
                 onClick={showPassword}
               >
                 <img
@@ -212,7 +212,7 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
           {passwordArray.length === 0 && <div>No Passwords to show</div>}
           {passwordArray.length != 0 && (
             <table className="table-auto text-white w-full overflow-hidden ">
-              <thead className="bg-green-800">
+              <thead className={`${DarkMode ? 'bg-[#6d6d6d30] shadow-[0_0_8px_2px_rgba(156,163,175,0.5)] border rounded px-4 py-2' : 'bg-black'}`}>
                 <tr>
                   <th className="py-2">Site</th>
                   <th className="py-2">Username</th>
@@ -220,7 +220,7 @@ const Manager  = ({ DarkMode, SetDarkMode }) => {
                   <th className="py-2">Actions</th>
                 </tr>
               </thead>
-              <tbody className="bg-[rgba(5,46,22,0.25)]">
+              <tbody className={`${DarkMode ? 'bg-[#0000000f]' : 'bg-[#406895]'}`}>
                 {passwordArray.map((item, index) => {
                   return (
                     <tr key={index}>

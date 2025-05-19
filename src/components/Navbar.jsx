@@ -3,16 +3,16 @@ import React from 'react';
 const Navbar = ({ DarkMode, SetDarkMode }) => {
   return (
     <nav 
-      className={`shadow-md px-4 transition-all duration-100 ease-in-out text-white
-        ${DarkMode ? 'bg-black shadow-gray-900/30' : 'bg-[#63a9f6] shadow-black-900/30'}`}
+      className={`px-4 transition-all duration-100 ease-in-out text-white
+        ${DarkMode ? 'bg-black outline outline-white shadow-[0_0_8px_2px_rgba(156,163,175,0.5)]' : 'bg-[#63a9f6] border-blue-500 outline outline-blue-200 shadow-lg shadow-blue-100'}`}
     >
       <div className="flex flex-wrap justify-between items-center h-14 max-w-screen-xl mx-auto w-full">
 
         {/* Logo */}
         <div className="text-2xl font-bold">
-          <span className="text-green-700">&lt;</span>
+          <span className={` ${DarkMode ? 'text-green-700' : 'text-black'} `}>&lt;</span>
           Pass
-          <span className="text-green-700">OP/&gt;</span>
+          <span className={` ${DarkMode ? 'text-green-700' : 'text-black'} `}>OP/&gt;</span>
         </div>
 
         {/* Buttons */}
@@ -27,7 +27,7 @@ const Navbar = ({ DarkMode, SetDarkMode }) => {
           {/* Theme Switcher Button */}
           <button
             onClick={() => SetDarkMode(!DarkMode)}
-            className="flex items-center bg-[#35333354] text-white px-4 py-1 rounded-full hover:bg-green-700 transition duration-200 text-sm"
+            className="flex items-center bg-[#35333354] text-white px-4 py-1 rounded-full hover:bg-[#4a4a4a80] transition duration-200 text-sm"
           >
             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M12 3v1m0 16v1m8.66-12.34l-.7.7m-13.9 0l-.7-.7M21 12h-1M4 12H3m15.66 6.34l-.7-.7m-13.9 0l-.7.7" />
