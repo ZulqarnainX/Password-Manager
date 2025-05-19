@@ -4,7 +4,7 @@ A simple, secure, and fully responsive **Password Manager** built with **Vite**,
 
 Store, edit, delete, and copy your passwords easily with a clean UI that supports both **dark** and **light** modes. All passwords are saved securely in **localStorage** for quick access without any backend.
 
-![Responsive Design Preview](./Preview/Responsive_Design.png)
+![Dark and Light Mode Preview](./Preview/dark_light_preview.png)
 
 ## Features
 
